@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/editShipmentMenu"
+        android:title="Edit Shipment" />
+    <item
+        android:id="@+id/reverseBidMenu"
+        android:title="Reverse Bid" />
+    <item
+        android:id="@+id/shipmentDeleteMenu"
+        android:title="Delete" />
+</menu>

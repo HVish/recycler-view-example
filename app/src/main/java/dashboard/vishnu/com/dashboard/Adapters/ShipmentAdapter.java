@@ -1,11 +1,14 @@
 package dashboard.vishnu.com.dashboard.Adapters;
 
 import android.content.Context;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -45,6 +48,35 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
         holder.shipmentBalance.setText("Balance: " + shipment.getBalance() + "");
 //        holder.pickup.setText(shipment.getPickup().getCity().getName());
 //        holder.delivery.setText(shipment.getDelivery().getCity().getName());
+        //creating a popup menu
+        final PopupMenu popup = new PopupMenu(context, holder.shipmentOptions);
+        //inflating menu from xml resource
+        popup.inflate(R.menu.shipment_menu);
+        //adding click listener
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.editShipmentMenu:
+                        Toast.makeText(context, "Edit Shipment", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.reverseBidMenu:
+                        Toast.makeText(context, "Reverse Bid", Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.shipmentDeleteMenu:
+                        Toast.makeText(context, "Delete Shipment", Toast.LENGTH_LONG).show();
+                        break;
+                }
+                return false;
+            }
+        });
+
+        holder.shipmentOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.show();
+            }
+        });
     }
 
     @Override
@@ -60,10 +92,12 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
                 shipmentAdvance,
                 shipmentBalance,
                 pickup,
-                delivery;
+                delivery,
+                shipmentOptions;
         public ViewHolder(View itemView) {
             super(itemView);
 
+            shipmentOptions = (TextView) itemView.findViewById(R.id.shipmentOptions);
             shipmentItemName = (TextView) itemView.findViewById(R.id.shipmentItemName);
             shipmentItemWeight = (TextView) itemView.findViewById(R.id.shipmentItemWeight);
             shipmentTruckType = (TextView) itemView.findViewById(R.id.shipmentTruckType);
