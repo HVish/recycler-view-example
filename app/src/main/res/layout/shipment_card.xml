@@ -2,6 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView
@@ -11,6 +14,7 @@
         android:elevation="4dp">
 
         <RelativeLayout
+            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -28,7 +32,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:padding="@dimen/activity_horizontal_margin"
+                android:paddingTop="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="15dp"
+                android:paddingBottom="10dp"
                 android:text="&#8942;"
                 android:textAppearance="?android:textAppearanceLarge" />
 
@@ -105,7 +112,7 @@
                             android:id="@+id/shipmentDalaHeight"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="20 Tones, 3ft" />
+                            android:text="Data Open, 3ft Height" />
                     </LinearLayout>
 
 
@@ -153,11 +160,13 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
+                    android:paddingRight="10dp"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true">
 
                     <TextView
                         android:id="@+id/pickup"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentStart="true"
@@ -174,6 +183,7 @@
 
                     <TextView
                         android:id="@+id/delivery"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerHorizontal="true"

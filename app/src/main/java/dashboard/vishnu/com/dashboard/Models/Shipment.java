@@ -65,6 +65,14 @@ public class Shipment {
         }
     }
 
+    public List<Bid> getBids() {
+        return bids;
+    }
+
+    public List<ShipmentItem> getItems() {
+        return items;
+    }
+
     public Date getPickupDate() {
         return pickupDate;
     }
