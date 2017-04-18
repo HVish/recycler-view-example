@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -16,11 +17,11 @@ import java.util.Locale;
  */
 
 public class Shipment {
-    private String generatedId, shipper, transporter, transporterId, balance, dala, remarks, status, truck;
+    private String generatedId, shipper, transporter, transporterId, balance, dala, remarks, status, truck, reverseBid;
     private int shipmentId, userId, truckType, truckCount;
-    private double advance, extraHeight, reverseBid, commission;
+    private double advance, extraHeight, commission;
     private Date pickupDate, bidClosingDate;
-    private ShipmentAddress pickup, delivery;
+    private List<ShipmentAddress> pickup, delivery;
     private List<Bid> bids;
     private List<ShipmentItem> items;
 
@@ -41,18 +42,28 @@ public class Shipment {
             truckCount = json.getInt("truckCount");
             advance = json.getDouble("advance");
             extraHeight = json.getDouble("extraHeight");
-            reverseBid = json.getDouble("reverseBid");
+            reverseBid = json.getString("reverseBid");
             commission = json.getDouble("commission");
-            pickup = new ShipmentAddress(json.getJSONObject("pickup"));
-            delivery = new ShipmentAddress(json.getJSONObject("delivery"));
+            bids = new ArrayList<>();
+            items = new ArrayList<>();
+            pickup = new ArrayList<>();
+            delivery = new ArrayList<>();
 
             JSONArray bidsJSON = json.getJSONArray("bids"),
-                    itemsJSON = json.getJSONArray("items");
+                    itemsJSON = json.getJSONArray("items"),
+                    pickupJSON = json.getJSONArray("pickAddress"),
+                    deliveryJSON = json.getJSONArray("deliveryAddress");
             for (int i = 0; i < bidsJSON.length(); i++) {
                  bids.add(new Bid(bidsJSON.getJSONObject(i)));
             }
             for (int i = 0; i < itemsJSON.length(); i++) {
                 items.add(new ShipmentItem(itemsJSON.getJSONObject(i)));
+            }
+            for (int i = 0; i < pickupJSON.length(); i++) {
+                pickup.add(new ShipmentAddress(pickupJSON.getJSONObject(i)));
+            }
+            for (int i = 0; i < deliveryJSON.length(); i++) {
+                delivery.add(new ShipmentAddress(deliveryJSON.getJSONObject(i)));
             }
 
             DateFormat isoFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.ENGLISH);
@@ -81,11 +92,11 @@ public class Shipment {
         return bidClosingDate;
     }
 
-    public ShipmentAddress getPickup() {
+    public List<ShipmentAddress> getPickup() {
         return pickup;
     }
 
-    public ShipmentAddress getDelivery() {
+    public List<ShipmentAddress> getDelivery() {
         return delivery;
     }
 
@@ -149,7 +160,7 @@ public class Shipment {
         return extraHeight;
     }
 
-    public double getReverseBid() {
+    public String getReverseBid() {
         return reverseBid;
     }
 

@@ -40,14 +40,14 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
     public void onBindViewHolder(ShipmentAdapter.ViewHolder holder, int position) {
         Shipment shipment = shipments.get(position);
 
-//        holder.shipmentItemName.setText(shipment.getItems().get(0).getName());
-//        holder.shipmentItemWeight.setText("" + shipment.getItems().get(0).getWeight() + " Tones");
+        holder.shipmentItemName.setText(shipment.getItems().get(0).getName());
+        holder.shipmentItemWeight.setText("" + shipment.getItems().get(0).getWeight() + " Tones");
         holder.shipmentTruckType.setText(shipment.getTruck());
         holder.shipmentDalaHeight.setText("Dala " + shipment.getDala() + ", " + shipment.getExtraHeight() + "ft Height");
         holder.shipmentAdvance.setText("Advance: " + shipment.getAdvance() + "%");
         holder.shipmentBalance.setText("Balance: " + shipment.getBalance() + "");
-//        holder.pickup.setText(shipment.getPickup().getCity().getName());
-//        holder.delivery.setText(shipment.getDelivery().getCity().getName());
+        holder.pickup.setText(shipment.getPickup().get(0).getCity().getName());
+        holder.delivery.setText(shipment.getDelivery().get(shipment.getDelivery().size() - 1).getCity().getName());
         //creating a popup menu
         final PopupMenu popup = new PopupMenu(context, holder.shipmentOptions);
         //inflating menu from xml resource

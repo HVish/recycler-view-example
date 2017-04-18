@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("Authorization", "JWT " + "");
+                params.put("Authorization", "JWT " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImZsYXNoIjp7fSwiYXV0aGVudGljYXRlZCI6dHJ1ZSwidXNlcklkIjo3MzIsInVzZXJOYW1lIjoiUmF0aXNoIiwidXNlclR5cGUiOiJzaGlwcGVyIiwidXNlclN0YXR1cyI6ImFjdGl2ZSIsInVzZXJMZXZlbCI6InByaW1hcnkiLCJlbWFpbCI6InJhdGlzaHVAdmFhaGlrYS5jb20iLCJub3RpZmljYXRpb25zIjoiMCIsImFwaUtleSI6IiIsImNvbXBhbnlJZCI6MjkxLCJjb21wYW55U3RhdHVzIjoiYWN0aXZlIn0sImlhdCI6MTQ5MjUwNjA5NywiZXhwIjoxNDkyNTA3NTM3LCJhdWQiOiJ2YWFoaWthLmNvbSIsImlzcyI6InZhYWhpa2EuY29tIn0.wFp8VedcRjLrOX47N-EYKYG8bOv-ptOKCRCi3sFNP_M");
                 return params;
             }
         };

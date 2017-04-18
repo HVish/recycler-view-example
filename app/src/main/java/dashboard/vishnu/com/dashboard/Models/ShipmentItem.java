@@ -9,14 +9,12 @@ import org.json.JSONObject;
 
 public class ShipmentItem {
     private String name;
-    private int shipmentId, capsuleId, itemId, quantity;
+    private int itemId, quantity;
     private double weight;
 
     public ShipmentItem(JSONObject json) {
         try {
             name = json.getString("name");
-            shipmentId = json.getInt("shipmentId");
-            capsuleId = json.getInt("capsuleId");
             itemId = json.getInt("itemId");
             quantity = json.getInt("quantity");
             weight = json.getDouble("weight");
@@ -27,14 +25,6 @@ public class ShipmentItem {
 
     public String getName() {
         return name;
-    }
-
-    public int getShipmentId() {
-        return shipmentId;
-    }
-
-    public int getCapsuleId() {
-        return capsuleId;
     }
 
     public int getItemId() {
