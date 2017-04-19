@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,8 +41,8 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ShipmentAdapter.ViewHolder holder, int position) {
-        Shipment shipment = shipments.get(position);
+    public void onBindViewHolder(final ShipmentAdapter.ViewHolder holder, int position) {
+        final Shipment shipment = shipments.get(position);
 
         holder.shipmentItemName.setText(shipment.getItems().get(0).getName());
         holder.shipmentItemWeight.setText("" + shipment.getItems().get(0).getWeight() + " Tones");
@@ -55,6 +56,55 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
         LinearLayoutManager layout = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false);
         holder.rvpBidContainer.setLayoutManager(layout);
         holder.rvpBidContainer.setAdapter(new BidAdapter(shipment.getBids(), context));
+
+        final int totalBids = shipment.getBids().size();
+        if (totalBids > 0) {
+            holder.tvBidPager.setText("Bid: 1 of " + totalBids + "");
+        } else {
+            holder.tvBidPager.setText("No Bids");
+        }
+        if (totalBids < 2) {
+            holder.nextBid.setVisibility(View.INVISIBLE);
+            holder.prevBid.setVisibility(View.INVISIBLE);
+        }
+
+        // change visibility of prev-next buttons based on pages left
+        holder.rvpBidContainer.addOnPageChangedListener(new RecyclerViewPager.OnPageChangedListener() {
+            @Override
+            public void OnPageChanged(int i, int i1) {
+                holder.tvBidPager.setText("Bid: " + (i1 + 1) + " of " + totalBids);
+                if ((totalBids - 1) == i1) {
+                    holder.nextBid.setVisibility(View.INVISIBLE);
+                    holder.prevBid.setVisibility(View.VISIBLE);
+                } else if (i1 == 0) {
+                    holder.nextBid.setVisibility(View.VISIBLE);
+                    holder.prevBid.setVisibility(View.INVISIBLE);
+                } else {
+                    holder.nextBid.setVisibility(View.VISIBLE);
+                    holder.prevBid.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        holder.nextBid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = holder.rvpBidContainer.getCurrentPosition();
+                if ((pos + 1) < totalBids) {
+                    holder.rvpBidContainer.scrollToPosition(pos + 1);
+                }
+            }
+        });
+
+        holder.prevBid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int pos = holder.rvpBidContainer.getCurrentPosition();
+                if (pos > 0) {
+                    holder.rvpBidContainer.scrollToPosition(pos - 1);
+                }
+            }
+        });
 
         //creating a popup menu
         final PopupMenu popup = new PopupMenu(context, holder.shipmentOptions);
@@ -101,8 +151,10 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
                 shipmentBalance,
                 pickup,
                 delivery,
-                shipmentOptions;
+                shipmentOptions,
+                tvBidPager;
         public RecyclerViewPager rvpBidContainer;
+        public ImageButton prevBid, nextBid;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -117,6 +169,9 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
             pickup = (TextView) itemView.findViewById(R.id.pickup);
             delivery = (TextView) itemView.findViewById(R.id.delivery);
             rvpBidContainer = (RecyclerViewPager) itemView.findViewById(R.id.rvpBidContainer);
+            prevBid = (ImageButton) itemView.findViewById(R.id.prevBid);
+            nextBid = (ImageButton) itemView.findViewById(R.id.nextBid);
+            tvBidPager = (TextView) itemView.findViewById(R.id.tvBidPager);
         }
     }
 }

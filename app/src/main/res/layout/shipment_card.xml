@@ -200,14 +200,51 @@
 
             </RelativeLayout>
 
-            <com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager
-                android:id="@+id/rvpBidContainer"
-                android:layout_below="@+id/shipment"
+            <RelativeLayout
+                android:id="@+id/bidSlider"
+                android:background="#f5f5f5"
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                app:rvp_triggerOffset="0.1"
-                app:rvp_singlePageFling="true"
-                android:clipToPadding="false"/>
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shipment">
+
+                <TextView
+                    android:id="@+id/tvBidPager"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:textStyle="bold"
+                    android:text="Bid: 1 of 4"/>
+
+                <com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager
+                    android:id="@+id/rvpBidContainer"
+                    android:layout_below="@id/tvBidPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    app:rvp_triggerOffset="0.1"
+                    app:rvp_singlePageFling="true"
+                    android:clipToPadding="false"/>
+
+                <ImageButton
+                    android:id="@+id/prevBid"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_keyboard_arrow_left_black_48dp"
+                    android:background="@android:color/transparent"/>
+
+                <ImageButton
+                    android:id="@+id/nextBid"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_keyboard_arrow_right_black_48dp"
+                    android:background="@android:color/transparent"/>
+
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/shipmentAction"
@@ -218,7 +255,7 @@
                 android:layout_marginBottom="-5dp"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:layout_below="@id/rvpBidContainer"
+                android:layout_below="@id/bidSlider"
                 android:text="Accept" />
 
         </RelativeLayout>
