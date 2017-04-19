@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="15dp"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
@@ -14,183 +15,211 @@
         android:elevation="4dp">
 
         <RelativeLayout
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/shipmenTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/activity_horizontal_margin"
-                android:text="@string/shipmentTitle"
-                android:textAppearance="?android:textAppearanceLarge" />
-
-            <TextView
-                android:id="@+id/shipmentOptions"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:paddingTop="10dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="15dp"
-                android:paddingBottom="10dp"
-                android:text="&#8942;"
-                android:textAppearance="?android:textAppearanceLarge" />
-
             <RelativeLayout
-                android:id="@+id/shipmentDetail"
+                android:padding="10dp"
+                android:id="@+id/shipment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/shipmenTitle">
+                android:layout_height="wrap_content">
 
-                <RelativeLayout
-                    android:id="@+id/shipmentItem"
+                <TextView
+                    android:id="@+id/shipmenTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/activity_horizontal_margin"
+                    android:text="@string/shipmentTitle"
+                    android:textAppearance="?android:textAppearanceLarge" />
+
+                <TextView
+                    android:id="@+id/shipmentOptions"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:padding="@dimen/activity_horizontal_margin">
-
-                    <ImageView
-                        android:id="@+id/shipmentItemIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/cart" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/left_padding_from_icon"
-                        android:layout_toEndOf="@+id/shipmentItemIcon"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/shipmentItemName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Wood" />
-
-                        <TextView
-                            android:id="@+id/shipmentItemWeight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="20 Tones" />
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/shipmentTruck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/shipmentItem"
-                    android:padding="@dimen/activity_horizontal_margin">
-
-                    <ImageView
-                        android:id="@+id/shipmentTruckIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/truck" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/left_padding_from_icon"
-                        android:layout_toEndOf="@+id/shipmentTruckIcon"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/shipmentTruckType"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tractor Trailer" />
-
-                        <TextView
-                            android:id="@+id/shipmentDalaHeight"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Data Open, 3ft Height" />
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/shipmentPayment"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/shipmentTruck"
-                    android:padding="@dimen/activity_horizontal_margin">
-
-                    <ImageView
-                        android:id="@+id/shipmentPaymentIcon"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/payment" />
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="@dimen/left_padding_from_icon"
-                        android:layout_toEndOf="@+id/shipmentPaymentIcon"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/shipmentAdvance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Advance: 60%" />
-
-                        <TextView
-                            android:id="@+id/shipmentBalance"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Balance: To Pay" />
-                    </LinearLayout>
-
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:id="@+id/ShipmentAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:paddingEnd="10dp"
-                    android:paddingStart="10dp"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true">
+                    android:paddingTop="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="10dp"
+                    android:text="&#8942;"
+                    android:textAppearance="?android:textAppearanceLarge" />
 
-                    <TextView
-                        android:id="@+id/pickup"
-                        android:textStyle="bold"
+                <RelativeLayout
+                    android:id="@+id/shipmentDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shipmenTitle">
+
+                    <RelativeLayout
+                        android:id="@+id/shipmentItem"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:text="Sikandarabad" />
+                        android:padding="@dimen/activity_horizontal_margin">
 
-                    <ImageView
-                        android:id="@+id/track"
-                        android:layout_width="40dp"
-                        android:layout_height="160dp"
-                        android:src="@drawable/track"
-                        android:layout_below="@+id/pickup"
-                        android:layout_centerHorizontal="true" />
+                        <ImageView
+                            android:id="@+id/shipmentItemIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/cart" />
 
-                    <TextView
-                        android:id="@+id/delivery"
-                        android:textStyle="bold"
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/left_padding_from_icon"
+                            android:layout_toEndOf="@+id/shipmentItemIcon"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/shipmentItemName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Wood" />
+
+                            <TextView
+                                android:id="@+id/shipmentItemWeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20 Tones" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/shipmentTruck"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@id/track"
-                        android:text="Kochi" />
+                        android:layout_below="@+id/shipmentItem"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <ImageView
+                            android:id="@+id/shipmentTruckIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/truck" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/left_padding_from_icon"
+                            android:layout_toEndOf="@+id/shipmentTruckIcon"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/shipmentTruckType"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Tractor Trailer" />
+
+                            <TextView
+                                android:id="@+id/shipmentDalaHeight"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Data Open, 3ft Height" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/shipmentPayment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/shipmentTruck"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <ImageView
+                            android:id="@+id/shipmentPaymentIcon"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/payment" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/left_padding_from_icon"
+                            android:layout_toEndOf="@+id/shipmentPaymentIcon"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/shipmentAdvance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Advance: 60%" />
+
+                            <TextView
+                                android:id="@+id/shipmentBalance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Balance: To Pay" />
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/ShipmentAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingEnd="10dp"
+                        android:paddingStart="10dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true">
+
+                        <TextView
+                            android:id="@+id/pickup"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:text="Sikandarabad" />
+
+                        <ImageView
+                            android:id="@+id/track"
+                            android:layout_width="40dp"
+                            android:layout_height="160dp"
+                            android:src="@drawable/track"
+                            android:layout_below="@+id/pickup"
+                            android:layout_centerHorizontal="true" />
+
+                        <TextView
+                            android:id="@+id/delivery"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_below="@id/track"
+                            android:text="Kochi" />
+                    </RelativeLayout>
                 </RelativeLayout>
+
             </RelativeLayout>
+
+            <com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager
+                android:id="@+id/rvpBidContainer"
+                android:layout_below="@+id/shipment"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                app:rvp_triggerOffset="0.1"
+                app:rvp_singlePageFling="true"
+                android:clipToPadding="false"/>
+
+            <Button
+                android:id="@+id/shipmentAction"
+                android:padding="0dp"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:layout_marginTop="-5dp"
+                android:layout_marginBottom="-5dp"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_below="@id/rvpBidContainer"
+                android:text="Accept" />
 
         </RelativeLayout>
 

@@ -1,6 +1,7 @@
 package dashboard.vishnu.com.dashboard.Adapters;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.lsjwzh.widget.recyclerviewpager.RecyclerViewPager;
 
 import java.util.List;
 
@@ -48,6 +51,11 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
         holder.shipmentBalance.setText("Balance: " + shipment.getBalance() + "");
         holder.pickup.setText(shipment.getPickup().get(0).getCity().getName());
         holder.delivery.setText(shipment.getDelivery().get(shipment.getDelivery().size() - 1).getCity().getName());
+
+        LinearLayoutManager layout = new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL,false);
+        holder.rvpBidContainer.setLayoutManager(layout);
+        holder.rvpBidContainer.setAdapter(new BidAdapter(shipment.getBids(), context));
+
         //creating a popup menu
         final PopupMenu popup = new PopupMenu(context, holder.shipmentOptions);
         //inflating menu from xml resource
@@ -94,6 +102,8 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
                 pickup,
                 delivery,
                 shipmentOptions;
+        public RecyclerViewPager rvpBidContainer;
+
         public ViewHolder(View itemView) {
             super(itemView);
 
@@ -106,6 +116,7 @@ public class ShipmentAdapter extends RecyclerView.Adapter<ShipmentAdapter.ViewHo
             shipmentBalance = (TextView) itemView.findViewById(R.id.shipmentBalance);
             pickup = (TextView) itemView.findViewById(R.id.pickup);
             delivery = (TextView) itemView.findViewById(R.id.delivery);
+            rvpBidContainer = (RecyclerViewPager) itemView.findViewById(R.id.rvpBidContainer);
         }
     }
 }
